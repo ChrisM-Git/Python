@@ -12,19 +12,28 @@ logo = '''
                       /_______________\\
 '''
 
+import os
+clear = lambda: os.system('clear')
+
 print(logo +"\n Welcome to the Auction program")
 
 bidend = False
 
-bids : {}
+bids = {}
 
-"""
+
 def findhighbid(bidamount):
     highbid = 0
+    winner = ""
+
     for bidder in bidamount:
-    if bidamount > highbid:
-      highbid = bidamount
-"""
+      amountofbid = bidamount[bidder]
+      if amountofbid > highbid:
+        highbid = amountofbid
+        winner = bidder
+    print(f"The highest bidder is {winner}, with the amount of ${highbid}")
+
+
 
 while not bidend:
   name = input("Enter your name: \n")
@@ -35,10 +44,9 @@ while not bidend:
   if other == "yes":
     clear()
   elif other == "no":
+    findhighbid(bids)
     bidend = True
 
-
-print(bids)
 
 
 

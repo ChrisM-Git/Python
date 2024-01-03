@@ -13,7 +13,6 @@ logo = '''
 '''
 
 import os
-clear = lambda: os.system('clear')
 
 print(logo +"\n Welcome to the Auction program")
 
@@ -42,7 +41,7 @@ while not bidend:
   other = input("Are there more bidders? \n").lower()
 
   if other == "yes":
-    clear()
+    os.system('clear')
   elif other == "no":
     findhighbid(bids)
     bidend = True

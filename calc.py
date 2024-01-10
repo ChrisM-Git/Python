@@ -25,21 +25,26 @@ operations = {
 
 should_continue = True
 
-num1 = int(input("whats the first number: \n"))
-while should_continue:
-  print("\n")
-  for sym in operations:
-    print(sym)
-  calc = input("Pick an operation: \n")
-  num = int(input("Whats the next number: \n"))
+def calculator():
+  
+  num1 = int(input("whats the first number: \n"))
+  while should_continue:
+    print("\n")
+    for sym in operations:
+      print(sym)
+    calc = input("Pick an operation: \n")
+    num = int(input("Whats the next number: \n"))
+  
+    answer = operations[calc](num1,num)
+  
+    print(f"{num1} + {num} is equal to {answer}")
+    cont = input(f"Continue calculating with {answer} or stop? \n")
+  
+    if cont == "stop":
+      should_continue = False
+      calculator()
+    elif cont == "yes":
+      num1 = answer
 
-  answer = operations[calc](num1,num)
 
-  print(f"{num1} + {num} is equal to {answer}")
-  cont = input(f"Continue calculating with {answer} or stop? \n")
-
-  if cont == "stop":
-    should_continue = False
-  elif cont == "yes":
-    num1 = answer
     

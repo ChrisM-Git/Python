@@ -44,7 +44,7 @@ def compare(playertotal, dealertotal):
   elif playertotal > dealertotal:
     print("You won")
   else:
-    return "Dealer wins"
+   return "Dealer Wins!"
 
 
 def playgame():
@@ -71,10 +71,13 @@ def playgame():
       else:
         option = input("Do you want to hit or stay? (type h or hit or s for stay\n")
 
+
+
         if option == "h":
           playercards.append(dealcards())
         else:
           endgame = True
+          print("Dealer's turn")
 
         # while loop for the computer to now play!
 

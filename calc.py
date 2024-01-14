@@ -1,5 +1,11 @@
-import art
-print(art.logo)
+logo = """
+  ___        _    _                  ___        _            _        _             
+ | _ \ _  _ | |_ | |_   ___  _ _    / __| __ _ | | __  _  _ | | __ _ | |_  ___  _ _ 
+ |  _/| || ||  _|| ' \ / _ \| ' \  | (__ / _` || |/ _|| || || |/ _` ||  _|/ _ \| '_|
+ |_|   \_, | \__||_||_|\___/|_||_|  \___|\__,_||_|\__| \_,_||_|\__,_| \__|\___/|_| 
+ 
+"""
+print(logo)
 
 
 def add(a1,a2):
@@ -23,10 +29,10 @@ operations = {
   "/": divide
 }
 
-should_continue = True
+
 
 def calculator():
-  
+  should_continue = True
   num1 = int(input("whats the first number: \n"))
   while should_continue:
     print("\n")
@@ -38,13 +44,17 @@ def calculator():
     answer = operations[calc](num1,num)
   
     print(f"{num1} + {num} is equal to {answer}")
-    cont = input(f"Continue calculating with {answer} or stop? \n")
-  
+    cont = input(f"Continue calculating with {answer} or stop? (yes or stop)\n")
+
     if cont == "stop":
       should_continue = False
-      calculator()
+
     elif cont == "yes":
       num1 = answer
+
+
+calculator()
+
 
 
     

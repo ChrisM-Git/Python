@@ -145,7 +145,7 @@ while not endgame:
 
      if lives == 0:
         endgame = True
-        print(f"You losr, the word was {hangword}")
+        print(f"You lost, the word was {hangword}")
 
 
 

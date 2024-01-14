@@ -14,7 +14,7 @@ decision = input(" Would you like to divide the bill with others? \n").lower()
 
 if decision =="yes":
   people = int(input("How many people are in the group? \n"))
-  billsplit = round(people / totalbill, 2)
+  billsplit = round(totalbill / people, 2)
   print(f"Each person should pay ${billsplit} ")
 
 else:

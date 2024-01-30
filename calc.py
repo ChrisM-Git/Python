@@ -21,6 +21,16 @@ def divide(d1,d2):
   return d1 / d2
 
 
+""" add a function wthin a function"""
+
+def calculator(n1,n2,func):
+  return func(n1,n2)
+
+result = calculator(2,3,multiply)
+print(result)
+
+
+
 operations = {
 
   "+": add,
@@ -28,7 +38,8 @@ operations = {
   "*": multiply,
   "/": divide
 }
-
+"""
+Below is the code for calculator without embedded functions
 
 
 def calculator():
@@ -56,5 +67,5 @@ def calculator():
 calculator()
 
 
-
+"""
     

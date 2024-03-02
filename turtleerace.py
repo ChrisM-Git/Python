@@ -7,14 +7,14 @@ screen.listen()
 turtlecolor = ["blue","green","yellow","orange","red","brown"]
 bet = screen.textinput(title="The Magnificant Turtle Race!", prompt="Choose your turtle color:\n blue,"
                                                                     "green,yellow,orange,red,brown")
-turtle_yinput = [-80,-60,-40,-20,0,20]
+turtle_yinpuy = [-80,-60,-40,-20,0,20]
 allturtles = []
 
 for turtles in range(0,5):
   newturtle = Turtle(shape="turtle")
   newturtle.color(turtlecolor[turtles])
   newturtle.penup()
-  newturtle.goto(x=-200,y=turtle_yinput[turtles])
+  newturtle.goto(x=-200,y=turtle_yinpuy[turtles])
   allturtles.append(newturtle)
 
 if bet:

@@ -12,6 +12,7 @@ screen.screensize(600,600)
 screen.bgcolor("black")
 screen.tracer(0)
 screen.title("The Snake Game")
+SPEED = 0.1
 
 snake = Snake()
 food = Food()
@@ -25,7 +26,7 @@ screen.onkey(snake.Right, "Right")
 
 gameon = True
 while gameon:
-    time.sleep(0.1)
+    time.sleep(SPEED)
     screen.update()
     snake.move()
 
@@ -34,10 +35,11 @@ while gameon:
         scoreboard.increasescore()
         food.refresh()
         snake.extend()
+        SPEED = SPEED - 0.001
 
 
     #detect collision with wall
-    if snake.head.xcor() > 400 or snake.head.xcor() < -400 or snake.head.ycor() > 400 or snake.head.ycor() < -400:
+    if snake.head.xcor() > 420 or snake.head.xcor() < -420 or snake.head.ycor() > 420 or snake.head.ycor() < -420:
         scoreboard.gameover()
         gameon = False
 

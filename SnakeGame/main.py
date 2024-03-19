@@ -40,20 +40,21 @@ while gameon:
 
     #detect collision with wall
     if snake.head.xcor() > 420 or snake.head.xcor() < -420 or snake.head.ycor() > 420 or snake.head.ycor() < -420:
-        scoreboard.gameover()
-        gameon = False
+        #scoreboard.gameover() replced with highscore addition
+        scoreboard.reset()
+        snake.reset()
+        #gameon = False
 
     #detect collision with tail
     for segment in snake.formsnake[1:]:
-       if snake.head.distance(segment) < 4:
-            gameon = False
-            scoreboard.gameover()
+       if segment == snake.head:
+          pass
+       elif snake.head.distance(segment) < 4:
+            #gameon = False
+            scoreboard.reset()
+            snake.reset()
 
-
-
-
-
-
+            #scoreboard.gameover() replaced with high score addition
 
 
 

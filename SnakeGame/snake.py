@@ -32,6 +32,15 @@ class Snake():
     def extend(self):
         self.addsegment(self.formsnake[-1].position())
 
+    def reset(self):
+        for segments in self.formsnake:
+            segments.goto(900,900)
+        self.formsnake.clear()
+        self.createsnake()
+        self.head = self.formsnake[0]
+
+
+
 
 
 

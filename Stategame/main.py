@@ -22,6 +22,13 @@ tries = 4
 guessedstates = []
 while len(guessedstates) < 50:
     answer = screen.textinput(title=f"Guessed States {len(guessedstates)} / 50", prompt="Enter the State, type Exit to end").title()
+
+#list comprehension list = [new_item for item in list if test]
+
+    learnstates = [ states for states in statelist if states not in guessedstates]
+    pandas.DataFrame(learnstates).to_csv("Statestolearn.csv")
+
+
     if answer in statelist:
         guessedstates.append(answer)
         t = turtle.Turtle()
@@ -34,12 +41,9 @@ while len(guessedstates) < 50:
         t.write(answer,font=FONT, align = ALIGNMENT)
     elif answer == "Exit":
         break
-#statestolearn.csv
-for states in statelist:
-    if states not in guessedstates:
-        learnstates.append(states)
 
-pandas.DataFrame(learnstates).to_csv("Statestolearn.csv")
+
+
 
 
 

@@ -18,7 +18,7 @@ equalto.grid(row=2, column=0)
 milesentry = Entry(width=10)
 milesentry.grid(row=0, column=2)
 
-kmentry = Entry(width=10)
+kmentry = Label(text="0",width=10)
 kmentry.grid(row=2, column=2)
 kmlabel = Label(text="Km")
 kmlabel.grid(row=2, column=3)

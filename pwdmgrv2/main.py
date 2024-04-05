@@ -1,8 +1,53 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+from cryptography.fernet import Fernet
 import pyperclip
 import json
+
+
+# ---------------------------- Encrypt / Decrypt -------------------------------- #
+
+def write_key():
+    """
+    Generates a key and save it into a file
+    """
+    key = Fernet.generate_key()
+    with open("filekey.key", "wb") as key_file:
+        key_file.write(key)
+
+
+def load_key():
+    """
+    Loads the key from the current directory named `key.key`
+    """
+    return open("filekey.key", "rb").read()
+def encrypt():
+    write_key()
+    key = load_key()
+    F = Fernet(key)
+    with open("data.json", "rb") as pwdfile:
+        filedata = pwdfile.read()
+    encrypted = F.encrypt(filedata)
+    with open("data.json", "wb") as pwdfile:
+        pwdfile.write(encrypted)
+    messagebox.showwarning(title="Encrpt", message=f"Password File has been encrypted")
+
+def decrypt():
+    key = load_key()
+    f = Fernet(key)
+    with open("data.json", "rb") as pwdfile:
+        # read the encrypted data
+        encrypted_data = pwdfile.read()
+        # decrypt data
+    decrypted_data = f.decrypt(encrypted_data)
+    # write the original file
+    with open("data.json", "wb") as pwdfile:
+        pwdfile.write(decrypted_data)
+    messagebox.showwarning(title="Decrypt", message=f"Warning, Password File has been decrypted!")
+
+
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -33,6 +78,8 @@ def search():
             data = json.load(datafile)
     except FileNotFoundError:
         messagebox.showinfo(title="Oops", message="File not created, fill in the blanks!")
+    except json.decoder.JSONDecodeError:
+        messagebox.showinfo(title="Oops", message="Decrypt the file first")
     else:
         with open("data.json", "r") as datafile:  # read file
             data = json.load(datafile)
@@ -84,11 +131,11 @@ def save():
 
 window = Tk()
 window.title("Password Manager")
-window.config(padx=50, pady=50)
-
+bg = PhotoImage(file="logo.png")
+window.config(padx=50, pady=50,bg="black")
 canvas = Canvas(height=200, width=200)
-logo_img = PhotoImage(file="logo.png")
-canvas.create_image(100, 100, image=logo_img)
+canvas.create_image(100, 100, image=bg)
+canvas.configure(bg="blue")
 canvas.grid(row=0, column=1)
 
 #Labels
@@ -116,4 +163,10 @@ add_button = Button(text="Add", width=36, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
 search_button = Button(text="Search",width=10, command=search)
 search_button.grid(row=1, column=2)
+encrypt = Button(text="Encrypt",command=encrypt)
+encrypt.grid(column=0,row=0)
+decrypt = Button(text="Decrypt",command=decrypt)
+decrypt.grid(column=2,row=0)
+
+
 window.mainloop()
